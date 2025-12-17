@@ -1,0 +1,15 @@
+fastapi
+uvicorn
+
+langchain
+langchain-community
+langchain-core
+
+sentence-transformers
+torch
+
+qdrant-client
+
+google-generativeai
+
+pypdf
