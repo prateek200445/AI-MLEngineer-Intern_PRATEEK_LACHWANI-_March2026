@@ -1,0 +1,17 @@
+# Secrets
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Data
+data_pdfs/
+*.pdf
+*.json
+
+# VS Code
+.vscode/
+
+# OS
+.DS_Store
