@@ -613,7 +613,7 @@ def extract_user_context_from_text(text: str | None):
     completed_courses_declared = False
     currently_enrolled_declared = False
 
-    for m in re.finditer(r"(?:completed|passed|finished|done)\s+([^\.;\n]+)", raw, flags=re.IGNORECASE):
+    for m in re.finditer(r"(?:completed|completing|passed|finished|done)\s+([^\.;\n]+)", raw, flags=re.IGNORECASE):
         # Check if preceded by negation (have not, haven't, did not, no, etc.)
         preceding_text = raw[:m.start()].lower()
         negation_patterns = [r"have\s+not\s+$", r"haven't\s+$", r"did\s+not\s+$", r"didn't\s+$", r"not\s+$", r"no\s+$"]

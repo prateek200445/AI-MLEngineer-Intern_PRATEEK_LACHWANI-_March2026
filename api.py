@@ -290,6 +290,7 @@ def _should_parse_context_from_question(question: str) -> bool:
         marker in q
         for marker in [
             "completed",
+            "completing",
             "passed",
             "finished",
             "done",
@@ -312,7 +313,7 @@ def _should_parse_context_from_question(question: str) -> bool:
         return True
 
     # Allow short, non-question course-code messages as context replies, e.g. "AH110, AH152".
-    has_course_code = re.search(r"\b[A-Z]{2}\d{3}\b", (question or "").upper()) is not None
+    has_course_code = re.search(rf"\b{COURSE_CODE_REGEX}\b", (question or "").upper()) is not None
     looks_like_question = any(
         marker in q
         for marker in [
@@ -347,6 +348,35 @@ def _is_prereq_or_eligibility_intent(question: str) -> bool:
             "before taking",
             "override prerequisites",
         ]
+    )
+
+
+def _is_course_recommendation_query(question: str) -> bool:
+    q = (question or "").lower()
+    return any(
+        marker in q
+        for marker in [
+            "what courses can i take after",
+            "what can i take after",
+            "courses can i take after",
+            "after completing",
+            "after i complete",
+        ]
+    )
+
+
+def _build_course_recommendation_answer(completed_courses: list[str], suggested_courses: list[str], start_term: str) -> str:
+    if not suggested_courses:
+        return (
+            "Based on the current rule set, I could not find unlocked next courses right now. "
+            "Please verify your completed courses or ask for a specific target course path."
+        )
+
+    completed_text = ", ".join(completed_courses)
+    suggested_text = ", ".join(suggested_courses)
+    return (
+        f"Based on your completed courses ({completed_text}), the next courses you can consider in {start_term} are: "
+        f"{suggested_text}."
     )
 
 
@@ -484,6 +514,78 @@ def query_rag(req: QueryRequest):
         session.touch()
 
         question = evaluation_question
+
+        # Special handling: recommendation intent should return actionable next-course suggestions,
+        # not strict eligibility clarification loops.
+        if _is_course_recommendation_query(question):
+            rule_store = _get_rule_store()
+            completed_courses = sorted(
+                {
+                    c.upper()
+                    for c in (effective_context.get("completed_courses") or [])
+                    if isinstance(c, str) and re.match(rf"^{COURSE_CODE_REGEX}$", c.upper())
+                }
+            )
+
+            if not completed_courses:
+                clarification = _merge_missing_inputs_into_clarification(None, ["completed_courses"])
+                session.pending_clarification = PendingClarification(
+                    original_question=question,
+                    target_course=None,
+                    missing_fields=list(clarification.get("missing_fields") or []),
+                    follow_up_questions=list(clarification.get("follow_up_questions") or []),
+                    message=clarification.get("message"),
+                )
+                session.touch()
+                return _with_session({
+                    "question": question,
+                    "answer": _build_clarification_answer_text(clarification),
+                    "decision": "need_more_info",
+                    "next_step": "Share completed course codes so I can suggest your next unlocked courses.",
+                    "effective_user_context": effective_context,
+                    "prerequisite_extractor": None,
+                    "advanced_evaluation": None,
+                    "clarification": clarification,
+                    "documents_used": [],
+                    "citations": [],
+                }, session.session_id)
+
+            if not rule_store:
+                raise HTTPException(status_code=500, detail="No catalog rule store is loaded. Run ingest.py to generate catalog_rules.json.")
+
+            start_term = (effective_context.get("semester") or "fall").lower()
+            plan = build_term_plan(
+                rule_store=rule_store,
+                completed_courses=completed_courses,
+                start_term=start_term,
+                max_courses_per_term=5,
+                max_credits=20,
+                term_count=1,
+            )
+            suggested = []
+            if plan.get("status") == "ok":
+                first_term = (plan.get("planned_terms") or [{}])[0]
+                suggested = [c.get("course") for c in (first_term.get("courses") or []) if c.get("course")]
+
+            answer = _build_course_recommendation_answer(completed_courses, suggested, start_term)
+            session.pending_clarification = None
+            session.touch()
+            return _with_session({
+                "question": question,
+                "answer": answer,
+                "decision": "policy_answer",
+                "next_step": "Ask for any specific course to get an eligibility check.",
+                "effective_user_context": effective_context,
+                "prerequisite_extractor": None,
+                "advanced_evaluation": {
+                    "mode": "course_recommendation",
+                    "completed_courses": completed_courses,
+                    "suggested_courses": suggested,
+                },
+                "clarification": None,
+                "documents_used": [],
+                "citations": [],
+            }, session.session_id)
 
         # 1. Search documents
         docs = search_docs(question)
