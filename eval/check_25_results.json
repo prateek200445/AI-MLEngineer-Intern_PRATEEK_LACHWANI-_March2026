@@ -1,0 +1,245 @@
+{
+  "total": 25,
+  "mismatches": 0,
+  "errors": 6,
+  "results": [
+    {
+      "id": 1,
+      "question": "Can I take CS152 if I have completed CS110 and CS113?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Have you completed any additional required math/CS/core courses? Please share course codes.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 2,
+      "question": "Am I eligible for AH111 if I have not completed AH51 or MC51?",
+      "expected_plan": "Not eligible",
+      "expected_class": "not_eligible",
+      "actual_decision": "not_eligible",
+      "actual_answer": "Final answer: Not eligible\nWhy: You explicitly indicated missing prerequisite completion in your question.\nMissing requirements: Complete at least one of: AH51, MC51",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 3,
+      "question": "Can I enroll in CS162 if I have not completed CS110?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 4,
+      "question": "Can I take NS164 if I have only completed NS112?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Have you completed any additional required math/CS/core courses? Please share course codes.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 5,
+      "question": "Am I eligible for CS146 if I have not taken CS114?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 6,
+      "question": "Can I take AH142 without completing AH110?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 7,
+      "question": "Can I enroll in B144 without completing any prior Business courses?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 8,
+      "question": "Can I take SS152 after completing SS110?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 9,
+      "question": "Am I eligible for NS156 if I have not completed required prerequisites?",
+      "expected_plan": "Not eligible",
+      "expected_class": "not_eligible",
+      "actual_decision": "not_eligible",
+      "actual_answer": "Final answer: Not eligible\nWhy: You explicitly indicated missing prerequisite completion in your question.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 10,
+      "question": "Can I enroll in AH154 if I have only completed AH111?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Have you completed any additional required math/CS/core courses? Please share course codes.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 11,
+      "question": "What courses do I need before taking CS166?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 12,
+      "question": "Full prerequisite path for CS156?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 13,
+      "question": "What do I need before AH166?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 14,
+      "question": "Can I directly take CS164?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 15,
+      "question": "Prerequisite chain for NS162?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 16,
+      "question": "Bachelor\u2019s degree core requirements?",
+      "expected_plan": "Complete cornerstone + integrated learning + capstone courses",
+      "expected_class": "policy_answer",
+      "status": "error",
+      "error": "500 Server Error: Internal Server Error for url: http://127.0.0.1:8001/query"
+    },
+    {
+      "id": 17,
+      "question": "Credits required?",
+      "expected_plan": "Minimum 120 credits",
+      "expected_class": "policy_answer",
+      "status": "error",
+      "error": "HTTPConnectionPool(host='127.0.0.1', port=8001): Read timed out. (read timeout=120)"
+    },
+    {
+      "id": 18,
+      "question": "Computational Sciences major requirements?",
+      "expected_plan": "CS110, CS111, CS113, CS114 + additional credits",
+      "expected_class": "policy_answer",
+      "status": "error",
+      "error": "500 Server Error: Internal Server Error for url: http://127.0.0.1:8001/query"
+    },
+    {
+      "id": 19,
+      "question": "Max minors allowed?",
+      "expected_plan": "Maximum 2 minors",
+      "expected_class": "policy_answer",
+      "status": "error",
+      "error": "500 Server Error: Internal Server Error for url: http://127.0.0.1:8001/query"
+    },
+    {
+      "id": 20,
+      "question": "Business major requirements?",
+      "expected_plan": "B110, B111, B112, B113, B199 + cross-college credits",
+      "expected_class": "policy_answer",
+      "status": "error",
+      "error": "500 Server Error: Internal Server Error for url: http://127.0.0.1:8001/query"
+    },
+    {
+      "id": 21,
+      "question": "Which semester is CS152 offered?",
+      "expected_plan": "I don\u2019t have that information",
+      "expected_class": "policy_answer",
+      "status": "error",
+      "error": "500 Server Error: Internal Server Error for url: http://127.0.0.1:8001/query"
+    },
+    {
+      "id": 22,
+      "question": "Who teaches AH111?",
+      "expected_plan": "Not available",
+      "expected_class": "abstain",
+      "actual_decision": "abstain",
+      "actual_answer": "I don't have that information in the provided catalog/policies.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 23,
+      "question": "Difficulty of CS156 vs CS152?",
+      "expected_plan": "Not available",
+      "expected_class": "abstain",
+      "actual_decision": "abstain",
+      "actual_answer": "I don't have that information in the provided catalog/policies.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 24,
+      "question": "Can I override prerequisites with professor approval?",
+      "expected_plan": "Need more information",
+      "expected_class": "need_more_info",
+      "actual_decision": "need_more_info",
+      "actual_answer": "I need a few details before I can give a definitive eligibility answer.\n\nPlease reply with:\n1. Which courses have you already completed? Please provide course codes like AH110, AH152.",
+      "matched": true,
+      "status": "ok"
+    },
+    {
+      "id": 25,
+      "question": "GPA required for CS major admission?",
+      "expected_plan": "Not specified",
+      "expected_class": "abstain",
+      "actual_decision": "abstain",
+      "actual_answer": "I don't have that information in the provided catalog/policies.",
+      "matched": true,
+      "status": "ok"
+    }
+  ]
+}
